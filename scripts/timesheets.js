@@ -80,6 +80,7 @@ loadTimesheets = function (exports) {
           this.responder.template("退勤更新", username, this.datetimeStr);
         }
       }
+      this.storage.setWorkTimeInDay(username, this.datetime);
     }
   };
 

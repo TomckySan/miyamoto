@@ -41,6 +41,10 @@ QUnit.test( "Timesheets", function(assert) {
       return row;
     },
 
+    setWorkTimeInDay: function(username, date) {
+      return "";
+    },
+
     getUsers: function() {
       return _.keys(this.data);
     },
