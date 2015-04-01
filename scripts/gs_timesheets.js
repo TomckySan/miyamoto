@@ -87,6 +87,17 @@ loadGSTimesheets = function () {
     return row;
   };
 
+  GSTimesheets.prototype.setWorkTimeInDay = function(username, date) {
+    var sheet = this._getSheet(username);
+    var rowNo = this._getRowNo(username, date);
+    var signInTime = sheet.getRange("B"+rowNo).getValue();
+    var signOutTime = sheet.getRange("C"+rowNo).getValue();
+    var workTime = (signOutTime - signInTime)/(1000*60*60);
+    sheet.getRange("E"+rowNo).setValue(workTime);
+    
+    return "";
+  };
+
   GSTimesheets.prototype.getUsers = function() {
     return _.compact(_.map(this.spreadsheet.getSheets(), function(s) {
       var name = s.getName();
